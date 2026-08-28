@@ -156,8 +156,39 @@
       color: var(--muted);
       line-height: 1.75;
       font-size: 0.95rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
       animation: fadeUp 0.9s 0.3s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.9s 0.35s ease both;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .hero-ctas {
@@ -558,6 +589,16 @@
       color: var(--muted);
       line-height: 1.65;
       flex: 1;
+    }
+
+    .project-desc code {
+      font-family: 'SF Mono', 'Menlo', monospace;
+      font-size: 0.78rem;
+      background: rgba(192,132,252,0.1);
+      border: 1px solid rgba(192,132,252,0.2);
+      color: var(--cyan);
+      padding: 0.05rem 0.4rem;
+      border-radius: 5px;
     }
 
     .project-footer {
@@ -1103,14 +1144,21 @@
     <span id="typewriter"></span>
   </p>
   <p class="hero-desc">
-    Backend engineer with 4+ years building high-scale systems in fintech and search.
-    Currently exploring reliability and factuality in LLMs as an AI Research Intern at Meta, and pursuing my MS in Computer Science at UMass Amherst.
-    I care about how systems behave in production — especially when they don’t haha :)
+    Backend engineer with 4+ years building high-scale systems in fintech and industrial search.
+    Most recently an AI Research Intern at Meta, building GPU-cluster training infrastructure for RL fine-tuning
+    research on LLM reasoning and hallucination reduction. Currently pursuing my MS in Computer Science at
+    UMass Amherst (GPA 4.0/4.0). I care about how systems behave under failure, not just under ideal conditions.
   </p>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num">4+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-num">45%</span><span class="stat-label">P99 Latency Cut</span></div>
+    <div class="stat-item"><span class="stat-num">8M+</span><span class="stat-label">Merchants Served</span></div>
+    <div class="stat-item"><span class="stat-num">4.0</span><span class="stat-label">GPA @ UMass</span></div>
+  </div>
   <div class="hero-ctas">
     <a href="#projects" class="btn-primary">View My Work</a>
     <a href="#contact" class="btn-outline">Get In Touch</a>
-    <a href="ShireenMeher_resume_withPortfolio.pdf" download class="btn-resume">↓ Resume</a>
+    <a href="Shireen_Meher_Resume.pdf" download class="btn-resume">↓ Resume</a>
   </div>
   <div class="hero-socials">
     <a href="https://github.com/ShireenMeher" target="_blank" class="social-link">
@@ -1139,64 +1187,71 @@
         <div class="tags">
           <span class="tag purple">Python</span>
           <span class="tag purple">Java</span>
-          <span class="tag purple">Golang</span>
+          <span class="tag purple">Go</span>
           <span class="tag purple">JavaScript</span>
           <span class="tag purple">TypeScript</span>
+          <span class="tag purple">SQL</span>
           <span class="tag purple">C</span>
           <span class="tag purple">PHP</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-card-title">Infrastructure & Cloud</div>
+        <div class="skill-card-title">Frameworks & Libraries</div>
         <div class="tags">
-          <span class="tag cyan">AWS</span>
-          <span class="tag cyan">Docker</span>
-          <span class="tag cyan">Kubernetes</span>
-          <span class="tag cyan">CI/CD</span>
-          <span class="tag cyan">Lambda</span>
-          <span class="tag cyan">SQS</span>
-          <span class="tag cyan">SNS</span>
+          <span class="tag cyan">FastAPI</span>
+          <span class="tag cyan">Flask</span>
+          <span class="tag cyan">React</span>
+          <span class="tag cyan">React Native</span>
+          <span class="tag cyan">Chi Router (Go)</span>
+          <span class="tag cyan">PyTorch</span>
+          <span class="tag cyan">Hugging Face</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-card-title">Databases</div>
+        <div class="skill-card-title">Databases & Search</div>
         <div class="tags">
-          <span class="tag mint">Neo4j</span>
           <span class="tag mint">PostgreSQL</span>
+          <span class="tag mint">Redis</span>
           <span class="tag mint">MongoDB</span>
-          <span class="tag mint">MySQL</span>
+          <span class="tag mint">Neo4j</span>
+          <span class="tag mint">Elasticsearch/OpenSearch</span>
+          <span class="tag mint">Firebase Firestore</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-card-title">Search & Backend</div>
+        <div class="skill-card-title">Cloud & Infra</div>
         <div class="tags">
-          <span class="tag pink">Elasticsearch</span>
-          <span class="tag pink">OpenSearch</span>
-          <span class="tag pink">Flask</span>
-          <span class="tag pink">REST APIs</span>
-          <span class="tag pink">Laravel</span>
-          <span class="tag pink">Retool</span>
+          <span class="tag pink">AWS (Lambda/SNS/SQS)</span>
+          <span class="tag pink">Docker</span>
+          <span class="tag pink">Kubernetes</span>
+          <span class="tag pink">RabbitMQ</span>
+          <span class="tag pink">CI/CD</span>
+          <span class="tag pink">Grafana</span>
+          <span class="tag pink">Cloudflare Workers</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-card-title">AI & ML</div>
+        <div class="skill-card-title">AI / ML & GenAI</div>
         <div class="tags">
-          <span class="tag peach">LLMs</span>
-          <span class="tag peach">OpenAI API</span>
-          <span class="tag peach">Semantic Search</span>
+          <span class="tag peach">LLM Fine-tuning</span>
           <span class="tag peach">Reinforcement Learning</span>
-          <span class="tag peach">kNN</span>
+          <span class="tag peach">RAG</span>
+          <span class="tag peach">vLLM</span>
+          <span class="tag peach">Prompt Engineering</span>
+          <span class="tag peach">Agent Orchestration</span>
+          <span class="tag peach">Claude / GPT APIs</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-card-title">Concepts</div>
+        <div class="skill-card-title">Systems & Concepts</div>
         <div class="tags">
           <span class="tag purple">Distributed Systems</span>
-          <span class="tag purple">System Design</span>
-          <span class="tag purple">DBMS</span>
-          <span class="tag purple">OOP</span>
-          <span class="tag purple">DSA</span>
           <span class="tag purple">Microservices</span>
+          <span class="tag purple">Consensus (Paxos)</span>
+          <span class="tag purple">Fault Tolerance</span>
+          <span class="tag purple">JWT / OAuth</span>
+          <span class="tag purple">System Design</span>
+          <span class="tag purple">DSA</span>
         </div>
       </div>
     </div>
@@ -1259,12 +1314,13 @@
                 <div class="exp-company meta">Meta</div>
               </div>
             </div>
-            <div class="exp-date">Jan 2026 – Present</div>
+            <div class="exp-date">Jan 2026 – Jun 2026</div>
           </div>
-          <div class="exp-subtitle">FactCurriculum: Adaptive Verifiable Factual Training to Reduce Hallucinations in LLMs</div>
+          <div class="exp-subtitle">RL Fine-tuning Infrastructure for LLM Reasoning & Hallucination Reduction</div>
           <ul class="exp-bullets">
-            <li>Designing <strong>FactCurriculum</strong>, an adaptive auto-verifiable factual training framework for LLMs using KB-backed QA tasks and Reinforcement Learning to study hallucination reduction and confidence calibration.</li>
-            <li>Building an evaluation pipeline to measure <strong>factual accuracy, hallucination rate, and Expected Calibration Error (ECE)</strong> against SFT baselines on 1B-scale models.</li>
+            <li>Engineered a large-scale <strong>GPU cluster training pipeline</strong> in Python with automated <strong>SLURM job submission</strong> for distributed training runs.</li>
+            <li>Built data generation and reward-extraction components with logging, monitoring, and experiment tracking to support <strong>RL fine-tuning research</strong> targeting LLM reasoning and hallucination reduction.</li>
+            <li>Supported curriculum-scheduled training runs and out-of-distribution (OOD) evaluation sets as part of infrastructure powering <strong>reinforcement-learning fine-tuning research for large language models</strong> at Meta.</li>
           </ul>
         </div>
       </div>
@@ -1282,13 +1338,12 @@
             </div>
             <div class="exp-date">Mar 2023 – Jan 2025</div>
           </div>
-          <div class="exp-subtitle">Category Connect & Search Relevance Platform</div>
+          <div class="exp-subtitle">Search Indexing Pipeline & Hybrid Retrieval Platform</div>
           <ul class="exp-bullets">
-            <li>Designed an <strong>event-driven ingestion pipeline</strong> (Lambda + SQS + SNS) to process <strong>0.7–1M vendor records</strong>, choosing async fan-out to handle bursty workloads and avoid backpressure on downstream search indexing.</li>
-            <li>Built a hybrid search system in Elasticsearch combining <strong>OpenAI embedding-based semantic search</strong> with Lucene kNN and keyword relevance scoring, improving coverage and relevance for category-based vendor discovery.</li>
-            <li>Solely owned the <strong>Neo4j graph database</strong> with complex APOC-based traversals, efficient indexing, and schema customization for industrial procurement search.</li>
-            <li>Designed relevance signals and ranking strategies achieving <strong>70% relevance across production queries</strong>; built a self-serve graph and tag management system using Python Flask + Retool.</li>
-            <li>Integrated <strong>GPT-based APIs</strong> to auto-generate and enrich vendor metadata, strengthening discovery and downstream search relevance.</li>
+            <li>Architected a <strong>cloud-native search indexing pipeline</strong> (AWS Lambda, SNS, SQS) decoupling SERP scraping from Elasticsearch/OpenSearch indexing, preventing scrape failures and traffic spikes from degrading search availability; used <strong>RabbitMQ</strong> for async inter-service communication.</li>
+            <li>Designed a <strong>three-mode hybrid retrieval system</strong> for industrial procurement queries — semantic vector search, Lucene kNN/keyword scoring with weighted field relevance, and Boolean must/should/must_not matching.</li>
+            <li>Owned <strong>Neo4j graph infrastructure</strong> for vendor-category relationships (APOC traversals, composite indexing, schema evolution); benchmarked Neo4j+Elasticsearch vs. Elasticsearch-only and consolidated architecture where recall was comparable.</li>
+            <li>Built a full-stack self-serve taxonomy tool (Flask + Retool) with <strong>GPT-based metadata enrichment</strong>, cutting search-ops turnaround time from <strong>3 days to under 30 minutes</strong>.</li>
           </ul>
         </div>
       </div>
@@ -1306,11 +1361,12 @@
             </div>
             <div class="exp-date">Jul 2021 – Feb 2023</div>
           </div>
-          <div class="exp-subtitle">Payment Systems & Platform Modernization</div>
+          <div class="exp-subtitle">Payments Auth Path & Platform Modernization</div>
           <ul class="exp-bullets">
-            <li>Improved high-throughput payment and merchant activation flows via <strong>goroutine-based concurrency</strong> and replica database configurations, reducing <strong>P99 latency by 45%</strong> and support tickets by 35%.</li>
-            <li>Designed and productionized <strong>Rule-Based Method Enablement</strong>, a real-time event-driven system that automatically configures merchant payment methods based on dynamic business parameters using Laravel events.</li>
-            <li>Led <strong>monolith-to-microservices API decomposition</strong>, resolving data mismatches and fixing 341 failing unit tests to stabilize releases and improve service isolation.</li>
+            <li>Reduced <strong>P99 latency 45%</strong> (820ms → 450ms) on the payments auth path serving <strong>8M+ merchants and ₹5T+ GMV</strong>, via goroutine concurrency, database access redesign, and replica-backed reads at <strong>15K+ TPS</strong> peak.</li>
+            <li>Shipped <strong>Rule-Based Method Enablement</strong>, an event-driven eligibility engine processing <strong>500K+ merchant events/day</strong>, auto-configuring payment methods via business rules.</li>
+            <li>Led payment-terminal service decomposition, migrating <strong>12+ read/write paths</strong> to service ownership and resolving 341 cross-module test failures while preserving transaction correctness.</li>
+            <li>Increased merchant activation success from <strong>91% to 99.3%</strong> by offloading reads to replica paths, cutting primary DB contention 60%; drove Grafana-based production observability and webhook alerting.</li>
           </ul>
         </div>
       </div>
@@ -1327,23 +1383,60 @@
     <div class="projects-grid">
 
       <div class="project-card reveal">
-        <div class="project-badge">Research</div>
-        <div class="project-icon">🧠</div>
-        <div class="project-name">FactCurriculum</div>
-        <div class="project-desc">Adaptive, auto-verifiable factual training framework for LLMs using KB-backed QA tasks and Reinforcement Learning to study hallucination reduction and confidence calibration on 1B-scale models.</div>
+        <div class="project-badge">Featured</div>
+        <div class="project-icon">🔀</div>
+        <div class="project-name">Distributed Workflow Orchestrator</div>
+        <div class="project-desc">Production-style DAG workflow engine in Go (à la Temporal/Airflow) — three stateless binaries share Postgres as the queue via <code>SELECT FOR UPDATE SKIP LOCKED</code>, with worker leases, crash recovery, cascade failure propagation, and an append-only audit log.</div>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag purple">Go</span>
+            <span class="tag purple">PostgreSQL</span>
+            <span class="tag purple">Docker</span>
+          </div>
+          <a href="https://github.com/ShireenMeher/distributed-workflow-orchestrator" target="_blank" class="project-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge">Featured</div>
+        <div class="project-icon">🦤</div>
+        <div class="project-name">Dodo — Job Application Tracker</div>
+        <div class="project-desc">Chrome extension (MV3) that auto-detects job application submissions across LinkedIn, Handshake, and major ATS platforms via layered DOM/network-level detection, logs them to Google Sheets, and reconciles Gmail status updates with tiered, confidence-based matching.</div>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag peach">JavaScript</span>
+            <span class="tag peach">Chrome Ext (MV3)</span>
+            <span class="tag peach">Google APIs</span>
+          </div>
+          <a href="https://github.com/ShireenMeher/job-application-tracker" target="_blank" class="project-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge">Featured</div>
+        <div class="project-icon">🌐</div>
+        <div class="project-name">Grounded Entity Search</div>
+        <div class="project-desc">Turns natural-language queries into structured, source-grounded entity tables. 8-stage pipeline with parallel scraping, GPT-4o-mini extraction, and hallucination detection — ~97% evidence verification, latency cut from ~140s to 30–40s via parallelization.</div>
         <div class="project-footer">
           <div class="project-tags">
             <span class="tag purple">Python</span>
-            <span class="tag peach">RL</span>
-            <span class="tag peach">LLMs</span>
+            <span class="tag purple">FastAPI</span>
+            <span class="tag purple">React</span>
           </div>
+          <a href="https://github.com/ShireenMeher/grounded_entity_search" target="_blank" class="project-link">
+            GitHub →
+          </a>
         </div>
       </div>
 
       <div class="project-card reveal">
         <div class="project-icon">📈</div>
         <div class="project-name">Distributed Stock Trading Platform</div>
-        <div class="project-desc">Fault-tolerant trading system with replicated order service using leader-based routing, re-election, and log replay for crash recovery under concurrent writes. LRU caching with server-driven invalidation deployed on AWS.</div>
+        <div class="project-desc">Fault-tolerant trading platform with a Paxos-based consensus order service replicated across 3 nodes, automatic leader re-election, and validated failure simulations — leader kill, replica failure, mid-trade partition — plus an LRU cache layer with latency benchmarking.</div>
         <div class="project-footer">
           <div class="project-tags">
             <span class="tag cyan">Python</span>
@@ -1357,31 +1450,15 @@
       </div>
 
       <div class="project-card reveal">
-        <div class="project-icon">💸</div>
-        <div class="project-name">BudgetBuddy</div>
-        <div class="project-desc">Full-stack AI-powered budgeting app with React Native frontend, Flask backend, and Firebase. Features expense tracking, smart categorization, analytics, and budget management with Strategy pattern for extensible filtering.</div>
+        <div class="project-icon">🗄️</div>
+        <div class="project-name">Database Storage Engine</div>
+        <div class="project-desc">Relational database storage engine built from scratch in Java — B+ tree indexing with sibling pointers for range scans, LRU buffer pool management, and a volcano-model query executor supporting Block Nested Loop joins and materialized projections.</div>
         <div class="project-footer">
           <div class="project-tags">
-            <span class="tag pink">Python</span>
-            <span class="tag pink">Flask</span>
-            <span class="tag mint">Firebase</span>
+            <span class="tag mint">Java</span>
+            <span class="tag mint">Maven</span>
           </div>
-          <a href="https://github.com/ShireenMeher/BudgetBuddy" target="_blank" class="project-link">
-            GitHub →
-          </a>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-icon">🌐</div>
-        <div class="project-name">Grounded Entity Search</div>
-        <div class="project-desc">Converts topic queries into structured entity tables using web search and LLM-based extraction with source verification — grounding AI outputs in real-time web evidence.</div>
-        <div class="project-footer">
-          <div class="project-tags">
-            <span class="tag purple">Python</span>
-            <span class="tag peach">LLMs</span>
-          </div>
-          <a href="https://github.com/ShireenMeher/grounded_entity_search" target="_blank" class="project-link">
+          <a href="https://github.com/ShireenMeher/database_engine" target="_blank" class="project-link">
             GitHub →
           </a>
         </div>
@@ -1389,13 +1466,13 @@
 
       <div class="project-card reveal">
         <div class="project-icon">📚</div>
-        <div class="project-name">CF AI Study Planner</div>
-        <div class="project-desc">Edge-native AI application using Cloudflare Agents for personalized study planning with persistent memory and durable workflows — built at the edge for low-latency planning experiences.</div>
+        <div class="project-name">AI Study Coach (Cloudflare Agents)</div>
+        <div class="project-desc">Edge-native stateful AI agent using Cloudflare Durable Objects for persistent memory across sessions, tool-based LLM interactions (function calling), and a real-time streaming chat interface via Workers AI.</div>
         <div class="project-footer">
           <div class="project-tags">
-            <span class="tag cyan">TypeScript</span>
-            <span class="tag cyan">Cloudflare</span>
-            <span class="tag peach">AI</span>
+            <span class="tag pink">TypeScript</span>
+            <span class="tag pink">Cloudflare Workers</span>
+            <span class="tag pink">React</span>
           </div>
           <a href="https://github.com/ShireenMeher/cf_ai_study_planner" target="_blank" class="project-link">
             GitHub →
@@ -1404,15 +1481,32 @@
       </div>
 
       <div class="project-card reveal">
-        <div class="project-icon">⚡</div>
-        <div class="project-name">Personal Portfolio Website</div>
-        <div class="project-desc">Interactive portfolio showcasing my work in backend systems, distributed architecture, and search platforms. Designed with custom animations, dynamic UI elements, and a focus on clean, intuitive presentation.</div>
+        <div class="project-icon">💸</div>
+        <div class="project-name">BudgetBuddy</div>
+        <div class="project-desc">Full-stack AI-powered budgeting app for college students — React Native + Expo client, Flask backend, Firebase Firestore. NLP expense categorization, receipt scanning, recurring-pattern detection, and PDF/CSV/Excel export.</div>
         <div class="project-footer">
           <div class="project-tags">
-            <span class="tag cyan">TypeScript</span>
-            <span class="tag mint">Node.js</span>
+            <span class="tag peach">React Native</span>
+            <span class="tag peach">Flask</span>
+            <span class="tag peach">Firebase</span>
           </div>
-          <a href="https://github.com/ShireenMeher/ShireenMeher.github.io" target="_blank" class="project-link">
+          <a href="https://github.com/ShireenMeher/BudgetBuddy" target="_blank" class="project-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🎯</div>
+        <div class="project-name">BestFit</div>
+        <div class="project-desc">CLI tool that evaluates job postings against a resume and GitHub project inventory using the Claude API — ranks fit and selects the best supporting projects per role, with strict schema validation, retry-on-failure, and full pytest coverage via a fake LLM client.</div>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag cyan">Python</span>
+            <span class="tag cyan">Claude API</span>
+            <span class="tag cyan">Pydantic</span>
+          </div>
+          <a href="https://github.com/ShireenMeher/bestfit" target="_blank" class="project-link">
             GitHub →
           </a>
         </div>
@@ -1478,7 +1572,7 @@
 </section>
 
 <footer>
-  <p>Designed & built by <span>Shireen Meher Chirravuri</span> · 2025</p>
+  <p>Designed & built by <span>Shireen Meher Chirravuri</span> · 2026</p>
 </footer>
 
 <script>
@@ -1552,7 +1646,7 @@
     'Backend Engineer',
     'Distributed Systems Enthusiast',
     'AI Research Intern @ Meta',
-    'MS CS @ UMass Amherst',
+    'MS CS @ UMass Amherst (4.0 GPA)',
   ];
   let pi = 0, ci = 0, deleting = false;
   const tw = document.getElementById('typewriter');

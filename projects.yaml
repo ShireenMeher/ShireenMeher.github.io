@@ -1,0 +1,242 @@
+# Your GitHub project inventory.
+# Edit this by hand whenever you add/change a project — no API sync.
+# "name" MUST be unique — Claude is required to reference projects by this
+# exact name, and the tool rejects any response that invents a name not listed here.
+
+projects:
+  - name: "Distributed Workflow Orchestrator"
+    url: "https://github.com/ShireenMeher/distributed-workflow-orchestrator"
+    languages: ["Go"]
+    tech_stack: ["PostgreSQL", "Docker", "Docker Compose", "Chi router", "pgxpool"]
+    concepts:
+      - "DAG scheduling"
+      - "Distributed task orchestration"
+      - "Worker leases"
+      - "Heartbeats"
+      - "Crash detection and recovery"
+      - "Exponential backoff retry"
+      - "Cascade failure propagation"
+      - "Stateless scheduler design"
+      - "SELECT ... FOR UPDATE SKIP LOCKED (Postgres as queue, no external broker)"
+      - "Concurrency without distributed locks"
+      - "Event sourcing / append-only audit log"
+      - "Task status state machine"
+      - "Microservices (API/Scheduler/Worker as independent binaries)"
+    summary: >
+      A production-style DAG workflow orchestration engine in Go, inspired by Temporal, Airflow,
+      and AWS Step Functions. Three independent stateless binaries (API server, Scheduler, Worker)
+      share a single PostgreSQL database as the central queue, using SELECT FOR UPDATE SKIP LOCKED
+      to let workers claim tasks concurrently without an external message broker or distributed
+      locks, eliminating an entire class of infrastructure and preventing double-execution.
+      Implements worker leases and heartbeats for crash detection, exponential backoff retry,
+      cascade failure propagation (marking downstream dependents SKIPPED), and a fully stateless
+      scheduler that resumes correctly after a restart purely from database state. Supports HTTP,
+      SHELL, DELAY, and WEBHOOK task types, with a REST API (Chi router), a scheduler loop that
+      identifies ready tasks via correlated NOT EXISTS subqueries over a DAG edge table, and an
+      append-only event log capturing every state transition for auditability. Deployed via Docker
+      Compose with a multi-stage Dockerfile. Directly demonstrates distributed systems design,
+      concurrency control, fault tolerance, and infrastructure/backend engineering at a level
+      comparable to production workflow orchestration systems.
+
+  - name: "Distributed Stock Trading Platform"
+    url: "https://github.com/ShireenMeher/distributed_stock_trading_platform"
+    languages: ["Python", "Shell", "Dockerfile"]
+    tech_stack: ["Docker", "Docker Compose", "ThreadPoolExecutor", "LRU Cache", "REST APIs"]
+    concepts:
+      - "Paxos consensus (Proposer, Acceptor, Learner roles)"
+      - "Leader election and automatic re-election on crash"
+      - "Replication across multiple replica nodes"
+      - "Fault tolerance and failure simulation (leader kill, replica failure, mid-trade partition)"
+      - "Crash recovery and replica state reconciliation"
+      - "Consistent transaction ordering under concurrent writes"
+      - "Thread-per-session concurrent request handling"
+      - "Load testing and latency benchmarking"
+      - "Microservices architecture with failover routing"
+    summary: >
+      A fault-tolerant distributed trading platform built as a microservices architecture with
+      three primary services: a Frontend service that routes requests and manages failover, a
+      Catalog service managing stock data with thread-safe updates, and an Order service
+      replicated across 3 nodes using Paxos-based consensus (Prepare/Promise/Accept/Learn phases)
+      to keep transaction ordering consistent under concurrent writes and partial failures, with
+      automatic leader re-election on crash detection. Fault tolerance was validated through
+      explicit failure simulations — leader kill, random replica failure, and mid-trade network
+      partition — plus replica sync tests confirming correct write recovery after restart. Uses
+      a ThreadPoolExecutor for thread-per-session concurrency and an LRU cache layer with latency
+      benchmarking, deployed on Docker Compose and load-tested on AWS. Demonstrates hands-on
+      implementation of a classic distributed consensus algorithm and the operational discipline
+      of testing failure modes rather than just the happy path.
+
+  - name: "Database Storage Engine"
+    url: "https://github.com/ShireenMeher/database_engine"
+    languages: ["Java"]
+    tech_stack: ["Maven", "JDK 17"]
+    concepts:
+      - "Buffer pool management with LRU eviction"
+      - "B+ tree indexing with sibling pointers for range scans"
+      - "Volcano-model (iterator-style) query executor (open/next/close)"
+      - "Block Nested Loop joins"
+      - "Materialized projections / temporary tables"
+      - "I/O cost analysis across buffer sizes"
+      - "Fixed-length record serialization with schema-driven layout"
+      - "Disk I/O via constant-time random access (pageId x PAGE_SIZE)"
+      - "Database internals / storage engine design"
+    summary: >
+      A relational database storage engine built from scratch in Java, implementing a four-layer
+      architecture: an application layer (dataset loader), an index layer (B+ tree for O(log f N)
+      point and range queries via leaf sibling pointers), a buffer manager coordinating page
+      movement between memory and disk with LRU eviction (only pages with a zero pin count are
+      evictable; dirty pages flush before removal), and a page/disk layer handling fixed
+      4096-byte page I/O. Includes a volcano-model query executor exposing iterator-style
+      open/next/close operators, supporting Block Nested Loop joins and materialized projections
+      across multiple tables, plus I/O cost analysis across different buffer sizes. Backed by
+      comprehensive unit tests covering buffer management, disk operations, and query execution.
+      Demonstrates real understanding of how relational databases work internally — the kind of
+      systems-level knowledge relevant to backend, infrastructure, and database-adjacent roles.
+
+  - name: "Grounded Entity Search"
+    url: "https://github.com/ShireenMeher/grounded_entity_search"
+    dates: "Jan 2026 - Apr 2026"
+    languages: ["Python", "JavaScript"]
+    tech_stack: ["FastAPI", "Uvicorn", "OpenAI GPT-4o-mini", "React", "Node.js", "SerpAPI", "trafilatura", "ThreadPoolExecutor", "Render", "Vercel"]
+    concepts:
+      - "LLM-based structured extraction"
+      - "Retrieval-augmented / source-grounded generation"
+      - "Hallucination detection (verbatim substring verification of evidence)"
+      - "Dynamic schema generation per query"
+      - "Multi-query search and result deduplication"
+      - "Parallel web scraping and text extraction"
+      - "Multi-signal ranking (completeness, corroboration, relevance, authority)"
+      - "Cost and latency optimization for LLM pipelines"
+      - "Type-aware entity deduplication"
+      - "Production monitoring (per-stage timings, token cost tracking, failure rates)"
+    summary: >
+      A system that turns natural-language queries like "AI startups in healthcare" into
+      structured, source-grounded entity tables with evidence links back to the web pages that
+      support each field. Implements an 8-stage pipeline: query classification and dynamic
+      schema generation via LLM, multi-query search with parallel SerpAPI calls and URL
+      deduplication, low-latency snippet pre-ranking before committing scrape budget, parallel
+      scraping and text extraction via trafilatura, parallel GPT-4o-mini extraction calls per
+      page against a dynamically generated JSON schema, hallucination detection that verifies
+      every piece of extracted evidence is a verbatim substring of the source text, entity
+      deduplication/merging across sources, and multi-signal ranking across 8 dimensions.
+      Parallelization brought end-to-end latency from ~140s sequential to 30-40s. Reports
+      ~97% evidence verification rate (3% hallucination rate) and ~82% scrape success rate in
+      production use. Backend on FastAPI/Render, frontend on React/Vercel. Demonstrates applied
+      LLM system design with a real focus on grounding, verification, and cost/latency tradeoffs
+      rather than a naive prompt-and-hope pipeline.
+
+  - name: "AI Study Coach (Cloudflare Agents)"
+    url: "https://github.com/ShireenMeher/cf_ai_study_planner"
+    dates: "Jan 2026 - Apr 2026"
+    languages: ["TypeScript", "HTML", "CSS"]
+    tech_stack: ["Cloudflare Workers", "Cloudflare Durable Objects", "Cloudflare Workers AI", "Vite", "React", "Zod", "AI SDK"]
+    concepts:
+      - "Stateful AI agents at the edge"
+      - "Persistent memory across sessions via Durable Objects"
+      - "Tool-based LLM interactions (function calling)"
+      - "Context pruning for efficient inference"
+      - "Event-driven / scheduled task execution"
+      - "Real-time streaming chat interfaces"
+      - "Separation of conversational memory from persistent state"
+    summary: >
+      An edge-native AI application demonstrating stateful agent design, built to address the
+      common limitation that most AI applications are stateless and lose context between
+      interactions. Uses Cloudflare Durable Objects as a persistent memory layer so a
+      conversational study-planning agent can retrieve and incrementally update the user's
+      latest study plan across multiple conversation turns, rather than starting from scratch
+      each session. Implements tool-based LLM interactions (e.g. getCurrentPlan, scheduleTask),
+      asynchronous task scheduling, and a real-time streaming chat interface via Workers AI for
+      edge-native inference, with a Vite/React frontend. Deployed live on Cloudflare Workers.
+      Demonstrates practical experience with agentic LLM application design, statefulness, and
+      edge computing infrastructure.
+
+  - name: "BudgetBuddy"
+    url: "https://github.com/ShireenMeher/BudgetBuddy"
+    dates: "Jan 2025 - May 2025"
+    languages: ["Python", "TypeScript"]
+    tech_stack: ["React Native", "Expo", "Flask", "Firebase Authentication", "Firebase Firestore", "JWT"]
+    concepts:
+      - "Full-stack mobile application development"
+      - "NLP-based expense categorization"
+      - "Receipt image processing"
+      - "Real-time updates via Firestore listeners"
+      - "JWT-based API security and role-based access control"
+      - "Recurring pattern recognition (daily/weekly/monthly/yearly)"
+      - "Data export pipelines (PDF/CSV/Excel)"
+    summary: >
+      A full-stack AI-powered budgeting app for college students, with a React Native + Expo
+      mobile client and a Python Flask backend microservice, using Firebase for authentication
+      and Firestore as the real-time database. Features NLP-based expense categorization,
+      receipt scanning, monthly and category-specific budgets with threshold alerts, recurring
+      expense/subscription tracking with pattern recognition, custom analytics reports with
+      export to PDF/CSV/Excel, and student-specific features like roommate expense splitting
+      and event budgeting. Communication between client and backend uses REST APIs secured with
+      JWT tokens and role-based access control. Demonstrates full-stack product development
+      spanning mobile frontend, backend services, auth, and a real external data store.
+
+  - name: "Dodo (Job Application Tracker Chrome Extension)"
+    url: "https://github.com/ShireenMeher/job-application-tracker"
+    dates: "Jun 2026 - Aug 2026"
+    languages: ["JavaScript"]
+    tech_stack: ["Chrome Extension (Manifest V3)", "Google Sheets API v4", "Gmail API", "chrome.identity OAuth", "chrome.storage", "chrome.alarms", "chrome.webRequest", "MutationObserver"]
+    concepts:
+      - "Browser extension development (MV3 service worker + content scripts)"
+      - "DOM mutation observation for SPA state detection"
+      - "Heuristic detection (keyword co-occurrence, form-submit classification) to avoid false positives"
+      - "Network-level request interception as a stronger detection signal (Ashby GraphQL submit calls)"
+      - "OAuth 2.0 via chrome.identity"
+      - "Offline queueing with retry-on-alarm (chrome.storage.local + chrome.alarms)"
+      - "Idempotent writes / duplicate detection (job ID + URL based)"
+      - "Cross-service data reconciliation (Gmail inbox to Sheets rows) with tiered, confidence-based matching and explicit skip-if-ambiguous behavior"
+      - "Google Sheets API programmatic formatting (frozen headers, column widths, cell styling)"
+      - "Regex-based ID/entity extraction across multiple ATS URL schemes (Greenhouse, Lever, Ashby, Workday, Indeed, LinkedIn)"
+      - "Request concurrency control (small worker pool) and exponential backoff with jitter for rate-limited APIs"
+    summary: >
+      "Dodo" is a Chrome extension (Manifest V3) that automatically detects job application
+      submissions on LinkedIn, Handshake, and arbitrary company career/ATS sites (Greenhouse,
+      Lever, Ashby, Workday, iCIMS, SmartRecruiters, BambooHR, Jobvite, Workable), then logs
+      them to a Google Sheet via the Sheets API v4, authenticated through chrome.identity OAuth.
+      Detection is layered: site-specific content scripts watch for confirmation DOM changes via
+      MutationObserver (LinkedIn Easy Apply, Handshake), a generic heuristic detector uses
+      keyword co-occurrence scoring plus application-form classification (excluding
+      login/OTP/search forms) for arbitrary career pages, and for Ashby specifically a
+      chrome.webRequest listener detects the actual GraphQL submit-application network call as a
+      stronger, DOM-independent signal. A background service worker persists entries locally,
+      writes to Sheets with offline queueing and retry via chrome.alarms if the write fails, and
+      deduplicates by job ID or URL so page refreshes don't create duplicate rows. A separate
+      Gmail integration (read-only OAuth scope) scans the inbox every 24 hours for status-update
+      emails (rejection, interview, assessment, offer), classifies them by keyword, and
+      reconciles them against existing Sheet rows using a tiered matching strategy — exact job-ID
+      match first, then unambiguous single-company match, then role-text-overlap scoring for
+      multiple open applications at the same company — explicitly skipping rather than guessing
+      when a match is ambiguous, and never creating new rows from email alone. Job/requisition
+      IDs are extracted via regex across multiple ATS URL formats (Greenhouse, Lever, Ashby,
+      Workday, Indeed, LinkedIn) so the same posting can be recognized from both the page URL and
+      later from an email. Includes a popup UI for manual logging and on-demand Gmail scans, a
+      floating on-page counter widget, and programmatic Sheet formatting (frozen header row,
+      column widths, cell styling) applied once. Demonstrates real product engineering judgment:
+      layered/tiered detection with fallbacks, explicit handling of ambiguity (skip rather than
+      guess), offline resilience (local queueing, retry), rate-limit-aware API usage (backoff with
+      jitter, bounded concurrency), and OAuth-secured integration with two separate Google APIs.
+
+  - name: "BestFit"
+    url: "https://github.com/ShireenMeher/bestfit"
+    dates: "Jun 2026 - Aug 2026"
+    languages: ["Python"]
+    tech_stack: ["Anthropic Claude API", "Pydantic", "PyYAML", "pytest"]
+    concepts:
+      - "LLM application design (structured JSON output, schema validation)"
+      - "Retry-on-validation-failure patterns for unreliable LLM output"
+      - "Agentic tool use (Claude's server-side web_fetch tool)"
+      - "CLI tool design"
+      - "Test-driven development with fake/mocked LLM clients"
+    summary: >
+      A local CLI tool that evaluates a batch of job postings against a candidate's resume and
+      GitHub project inventory using the Claude API, ranking jobs by fit and selecting the best
+      3 supporting projects per role with individual relevance scores. Built with strict JSON
+      schema validation (Pydantic), automatic retry with error feedback when Claude returns
+      invalid output or invents a project name, and Claude's native web_fetch tool for reading
+      job posting URLs rather than any custom scraping code. Fully covered by pytest using a
+      fake Claude client, with no network calls required for the test suite. Demonstrates
+      practical experience building reliable systems around LLM calls: schema enforcement,
+      hallucination guardrails, and graceful failure handling.

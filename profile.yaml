@@ -1,0 +1,98 @@
+# Your persistent candidate profile.
+# Edit this by hand whenever your resume/background changes — no parsing, no sync.
+# Everything here is treated as ground truth evidence for matching; Claude will
+# not be told about anything you don't include here.
+
+name: "Shireen Meher Chirravuri"
+total_years_experience: 4
+education:
+  - "MS Computer Science, University of Massachusetts Amherst, GPA 4.0/4.0, Jan 2025 - Dec 2026 (Expected)"
+  - "B.Tech, Indian Institute of Technology Bhubaneswar, 2017 - 2021"
+
+skills:
+  languages: ["Python", "Java", "Go", "PHP", "C", "JavaScript", "TypeScript", "HTML/CSS", "SQL"]
+  frameworks: ["FastAPI", "Flask", "React", "React Native", "Expo", "PyTorch", "Hugging Face Transformers", "Chi router (Go)"]
+  databases: ["PostgreSQL", "Redis", "MongoDB", "Neo4j", "Elasticsearch", "OpenSearch", "Firebase Firestore"]
+  cloud: ["AWS", "AWS Lambda", "AWS SNS", "AWS SQS", "RabbitMQ", "Docker", "Docker Compose", "Kubernetes", "Cloudflare Workers", "Cloudflare Durable Objects", "Jenkins", "CI/CD", "Git", "Linux", "Grafana"]
+  other:
+    - "REST APIs"
+    - "RESTful APIs"
+    - "Object-Oriented Programming (OOP)"
+    - "NoSQL"
+    - "Generative AI (Gen AI)"
+    - "Prompt Engineering"
+    - "Agent Orchestration"
+    - "Microservices"
+    - "Distributed Computing"
+    - "Distributed Systems"
+    - "Distributed Operating Systems (coursework)"
+    - "Network & Computer Security (coursework)"
+    - "Database Design & Implementation (coursework)"
+    - "Data Structures & Algorithms (coursework)"
+    - "TRL"
+    - "GRPO"
+    - "vLLM"
+    - "RAG (Retrieval-Augmented Generation)"
+    - "LLM Training"
+    - "LLM Fine-tuning"
+    - "Reinforcement Learning"
+    - "Synthetic Data Generation"
+    - "Weights & Biases"
+    - "GPU Cluster Training"
+    - "SLURM"
+    - "Elasticsearch/OpenSearch / Lucene kNN"
+    - "Semantic vector search"
+    - "Hybrid retrieval"
+    - "Consensus algorithms (Paxos)"
+    - "Leader election"
+    - "Fault tolerance"
+    - "Concurrency (goroutines, ThreadPoolExecutor)"
+    - "JWT authentication"
+    - "OAuth"
+    - "Retool"
+    - "GPT / OpenAI API"
+    - "SerpAPI"
+    - "Web scraping (server-side, non-JS)"
+
+work_experience:
+  - employer: "Meta"
+    title: "AI Research Intern"
+    dates: "Jan 2026 - Jun 2026"
+    responsibilities:
+      - "Engineered a large-scale GPU cluster training pipeline in Python"
+      - "Automated SLURM job submission for distributed training runs"
+      - "Built data generation and reward extraction components with logging, monitoring, and experiment tracking"
+      - "Supported curriculum-scheduled training runs and out-of-distribution (OOD) evaluation sets"
+      - "Supported RL fine-tuning research targeting LLM reasoning and hallucination reduction"
+    achievements:
+      - "Built infrastructure supporting reinforcement-learning fine-tuning research for large language models at Meta"
+
+  - employer: "Venwiz"
+    title: "Software Engineer II"
+    dates: "Mar 2023 - Jan 2025"
+    responsibilities:
+      - "Architected a cloud-native search indexing pipeline using AWS Lambda, SNS, and SQS, decoupling SERP scraping from Elasticsearch/OpenSearch indexing"
+      - "Used RabbitMQ for asynchronous inter-service communication across backend services"
+      - "Designed a three-mode hybrid retrieval system for industrial procurement queries: semantic vector search, Lucene kNN/keyword scoring with weighted field relevance, and Boolean matching over must/should/must_not clauses"
+      - "Owned Neo4j graph infrastructure for vendor-category relationships, including APOC traversals, composite indexing, and schema evolution"
+      - "Benchmarked Neo4j+Elasticsearch/OpenSearch versus Elasticsearch/OpenSearch-only and consolidated architecture where recall was comparable"
+      - "Built a full-stack web application (Flask backend, Retool UI) with GPT-based metadata enrichment for self-serve taxonomy management"
+      - "Designed MongoDB indexes and aggregate queries to speed up Retool UI page loads"
+    achievements:
+      - "Prevented scrape failures and traffic spikes from degrading search availability by decoupling scraping from indexing"
+      - "Cut search-ops turnaround time from 3 days to under 30 minutes via the self-serve taxonomy tool"
+
+  - employer: "Razorpay"
+    title: "Software Engineer"
+    dates: "Jul 2021 - Feb 2023"
+    responsibilities:
+      - "Reduced P99 latency 45% (820ms to 450ms) on the payments auth path serving 8M+ merchants and INR 5T+ GMV via goroutine concurrency, database access redesign, and replica-backed reads at 15K+ TPS peak"
+      - "Shipped Rule-Based Method Enablement: an event-driven eligibility engine processing 500K+ merchant events/day, auto-configuring payment methods via business rules"
+      - "Led payment-terminal service decomposition, migrating 12+ read/write paths to service ownership, and drove unit and integration testing, resolving 341 cross-module test failures while preserving transaction correctness"
+      - "Increased merchant activation success from 91% to 99.3% by offloading reads to replica paths, cutting primary DB contention 60% and enabling horizontal scale-out without reliability regressions"
+      - "Used Grafana widely for production observability: configured dashboards and set up monitoring with webhook-based alerting"
+    achievements:
+      - "Reduced P99 latency 45% (820ms to 450ms) on a payments auth path serving 8M+ merchants at 15K+ TPS peak"
+      - "Cut merchant onboarding/activation time from days to minutes for 95% of cases via the eligibility engine"
+      - "Increased merchant activation success rate from 91% to 99.3%"
+      - "Resolved 341 cross-module test failures during a 12+ path service decomposition while preserving transaction correctness"
